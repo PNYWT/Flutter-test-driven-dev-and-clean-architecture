@@ -4,7 +4,7 @@ import 'package:understand_dart_and_architecture_layer_01/core/utilis/typedef.da
 import 'package:understand_dart_and_architecture_layer_01/src/authentication/data/models/user_model.dart';
 import 'package:understand_dart_and_architecture_layer_01/src/authentication/domain/entities/user.dart';
 
-import '../../../fixtures/fixture_reader.dart';
+import '../../../../fixtures/fixture_reader.dart';
 
 void main() {
   const tModel = UserModel.empty();

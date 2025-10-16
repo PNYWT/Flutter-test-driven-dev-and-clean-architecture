@@ -19,7 +19,6 @@ void main() {
     repository = MockAuthenticationRepository();
     usecase = CreateUser(repository);
   });
-  const params = CreateUserParams.empty();
 
   test("should call the [Repository.createUser]", () async {
     // Arrange
@@ -34,6 +33,7 @@ void main() {
       (_) async => const Right(null),
     ); // บอก mock ว่า “ถ้ามีคนเรียก method นี้” → ให้ตอบกลับ Right(null) ทันที
 
+    const params = CreateUserParams.empty();
     // Act
     final result = await usecase(params);
 

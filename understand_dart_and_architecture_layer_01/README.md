@@ -19,3 +19,11 @@
 - Model
 - Unit Test -> model
 - RepositoryImplementation
+
+#Section 4 Repository and Authentication
+
+- Unit Test -> RepositoryImplementation
+
+#Section 5 DataSource - HTTP layer and test
+
+-
