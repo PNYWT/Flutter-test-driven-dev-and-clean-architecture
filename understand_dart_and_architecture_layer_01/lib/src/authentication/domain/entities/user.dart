@@ -16,11 +16,11 @@ class User extends Equatable {
   const User.empty()
     : this(
         id: "_empty.id",
-        createdAt: 'empty.createdAt',
-        name: 'empty.name',
-        avatar: 'empty.avatar',
+        createdAt: '_empty.createdAt',
+        name: '_empty.name',
+        avatar: '_empty.avatar',
       );
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [id, name, avatar];
 }
