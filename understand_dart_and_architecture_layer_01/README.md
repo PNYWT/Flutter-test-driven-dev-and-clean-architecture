@@ -30,3 +30,10 @@
 - Unit Test -> AuthenticationRemoteDataSourceImpl
   - createUser Sucessful and Error
   - getUsers Successful and Error
+
+#Section 6 Presentation layer and bloc and usecase
+
+- BLoC and Cubit
+- Unit Test -> Cubit
+
+#Section 7 Dependency Injection
