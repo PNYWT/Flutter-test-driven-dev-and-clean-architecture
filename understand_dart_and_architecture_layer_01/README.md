@@ -37,3 +37,7 @@
 - Unit Test -> Cubit
 
 #Section 7 Dependency Injection
+
+- Get init
+
+#Section 8 Create UI
