@@ -7,6 +7,11 @@ import 'package:understand_dart_and_architecture_layer_01/src/authentication/dom
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
+/*
+ Just Example how to write BLoC.
+ This Project we use Cubit on UI and unir-test
+*/
+
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc({

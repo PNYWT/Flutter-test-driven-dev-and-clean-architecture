@@ -23,6 +23,14 @@ class UserCreated extends AuthenticationState {
   const UserCreated();
 }
 
+class DeletingUser extends AuthenticationState {
+  const DeletingUser();
+}
+
+class UserDeleted extends AuthenticationState {
+  const UserDeleted();
+}
+
 class UserLoaded extends AuthenticationState {
   const UserLoaded(this.users);
 

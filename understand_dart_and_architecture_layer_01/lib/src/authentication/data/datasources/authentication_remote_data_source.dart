@@ -14,10 +14,13 @@ abstract class AuthenticationRemoteDataSource {
   });
 
   Future<List<UserModel>> getUsers();
+
+  Future<void> deleteUser(String id);
 }
 
 const kCreateUserEndpoint = "$kBaseUrl/users";
 const kGetUsersEndpoint = "$kBaseUrl/users";
+String kDeleteUserEndpoint(String id) => "$kBaseUrl/users/$id";
 
 class AuthenticationRemoteDataSourceImplementation
     implements AuthenticationRemoteDataSource {
@@ -41,6 +44,7 @@ class AuthenticationRemoteDataSourceImplementation
           "name": name,
           "avatar": avatar,
         }),
+        headers: {"Content-Type": "application/json"},
       );
 
       if (response.statusCode != 200 && response.statusCode != 201) {
@@ -73,6 +77,26 @@ class AuthenticationRemoteDataSourceImplementation
       return List<DataMap>.from(
         jsonDecode(response.body) as List,
       ).map((userData) => UserModel.fromMap(userData)).toList();
+    } on APIException {
+      rethrow;
+    } catch (e) {
+      throw APIException(message: e.toString(), statusCode: 505);
+    }
+  }
+
+  @override
+  Future<void> deleteUser(String id) async {
+    try {
+      final response = await _client.delete(
+        Uri.parse(kDeleteUserEndpoint(id)),
+        headers: {"Content-Type": "application/json"},
+      );
+      if (response.statusCode != 200 && response.statusCode != 201) {
+        throw APIException(
+          message: response.body,
+          statusCode: response.statusCode,
+        );
+      }
     } on APIException {
       rethrow;
     } catch (e) {

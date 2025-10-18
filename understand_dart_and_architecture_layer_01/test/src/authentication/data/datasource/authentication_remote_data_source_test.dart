@@ -18,11 +18,19 @@ void main() {
     dataSource = AuthenticationRemoteDataSourceImplementation(client);
     registerFallbackValue(Uri());
   });
+
+  // MARK: CreateUser
   group("createUser", () {
     test(
       "should complete successfully when the status code is 200 or 201",
       () async {
-        when(() => client.post(any(), body: any(named: "body"))).thenAnswer(
+        when(
+          () => client.post(
+            any(),
+            body: any(named: "body"),
+            headers: any(named: "headers"),
+          ),
+        ).thenAnswer(
           (_) async => http.Response("User created successfully", 200),
         );
         const createdAt = "test_createdAt";
@@ -44,12 +52,14 @@ void main() {
               "name": name,
               "avatar": avatar,
             }),
+            headers: {"Content-Type": "application/json"},
           ),
         ).called(1);
 
         verifyNoMoreInteractions(client);
       },
     );
+
     test(
       "should throw [APIException] when the status code is not 200 or 201",
       () async {
@@ -57,7 +67,13 @@ void main() {
           message: "Invalid data",
           statusCode: 400,
         );
-        when(() => client.post(any(), body: any(named: "body"))).thenAnswer(
+        when(
+          () => client.post(
+            any(),
+            body: any(named: "body"),
+            headers: any(named: "headers"),
+          ),
+        ).thenAnswer(
           (_) async =>
               http.Response(tAPIException.message, tAPIException.statusCode),
         );
@@ -82,6 +98,7 @@ void main() {
               "name": name,
               "avatar": avatar,
             }),
+            headers: {"Content-Type": "application/json"},
           ),
         ).called(1);
 
@@ -90,6 +107,7 @@ void main() {
     );
   });
 
+  // MARK: GetUsers
   group("getUsers", () {
     const tUsers = [UserModel.empty()];
     test(
@@ -125,6 +143,64 @@ void main() {
         expect(() async => methodCall(), throwsA(tAPIException));
 
         verify(() => client.get(Uri.parse(kCreateUserEndpoint))).called(1);
+
+        verifyNoMoreInteractions(client);
+      },
+    );
+  });
+
+  // MARK: DeleteUser
+  group("deleteUser", () {
+    test(
+      "should complete successfully when the status code is 200 or 201",
+      () async {
+        when(
+          () => client.delete(any(), headers: any(named: "headers")),
+        ).thenAnswer(
+          (_) async => http.Response("User delete successfully", 200),
+        );
+
+        const tid = "1";
+        final methodCall = dataSource.deleteUser;
+
+        expect(methodCall(tid), completes);
+
+        verify(
+          () => client.delete(
+            Uri.parse(kDeleteUserEndpoint(tid)),
+            headers: {"Content-Type": "application/json"},
+          ),
+        ).called(1);
+
+        verifyNoMoreInteractions(client);
+      },
+    );
+
+    test(
+      "should throw [APIException] when the status code is not 200 or 201",
+      () async {
+        const tAPIException = APIException(
+          message: "ID not found",
+          statusCode: 400,
+        );
+        when(
+          () => client.delete(any(), headers: any(named: "headers")),
+        ).thenAnswer(
+          (_) async =>
+              http.Response(tAPIException.message, tAPIException.statusCode),
+        );
+
+        const tid = "1";
+        final methodCall = dataSource.deleteUser;
+
+        expect(() async => methodCall(tid), throwsA(tAPIException));
+
+        verify(
+          () => client.delete(
+            Uri.parse(kDeleteUserEndpoint(tid)),
+            headers: {"Content-Type": "application/json"},
+          ),
+        ).called(1);
 
         verifyNoMoreInteractions(client);
       },

@@ -41,3 +41,10 @@
 - Get init
 
 #Section 8 Create UI
+
+- Create Home Screen
+- Try to Add DeleteUser by myself
+- Unit Test
+  - DeleteUser Usecase
+  - DeleteUser Datasource
+  - DeleteUser Cubit

@@ -45,4 +45,14 @@ class AuthenticationRepositoryImplementation
       return Left(ApiFailure.fromException(e));
     }
   }
+
+  @override
+  ResultVoid deleteUser(String id) async {
+    try {
+      await _remoteDataSource.deleteUser(id);
+      return const Right(null);
+    } on APIException catch (e) {
+      return Left(ApiFailure.fromException(e));
+    }
+  }
 }

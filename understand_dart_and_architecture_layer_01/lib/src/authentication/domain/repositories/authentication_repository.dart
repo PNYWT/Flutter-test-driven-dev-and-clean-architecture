@@ -11,4 +11,6 @@ abstract class AuthenticationRepository {
   });
 
   ResultFuture<List<User>> getUsers();
+
+  ResultVoid deleteUser(String id);
 }
