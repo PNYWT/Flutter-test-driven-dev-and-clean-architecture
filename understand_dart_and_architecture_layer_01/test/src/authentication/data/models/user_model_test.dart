@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:understand_dart_and_architecture_layer_01/core/utilis/typedef.dart';
+import 'package:understand_dart_and_architecture_layer_01/core/utils/typedef.dart';
 import 'package:understand_dart_and_architecture_layer_01/src/authentication/data/models/user_model.dart';
 import 'package:understand_dart_and_architecture_layer_01/src/authentication/domain/entities/user.dart';
 

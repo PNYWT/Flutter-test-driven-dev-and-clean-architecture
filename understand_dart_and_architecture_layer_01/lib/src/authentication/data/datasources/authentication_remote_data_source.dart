@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:understand_dart_and_architecture_layer_01/core/errors/exceptions.dart';
-import 'package:understand_dart_and_architecture_layer_01/core/utilis/constants.dart';
-import 'package:understand_dart_and_architecture_layer_01/core/utilis/typedef.dart';
+import 'package:understand_dart_and_architecture_layer_01/core/utils/constants.dart';
+import 'package:understand_dart_and_architecture_layer_01/core/utils/typedef.dart';
 import 'package:understand_dart_and_architecture_layer_01/src/authentication/data/models/user_model.dart';
 import "package:http/http.dart" as http;
 

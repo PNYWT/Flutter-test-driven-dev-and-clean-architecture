@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:understand_dart_and_architecture_layer_01/core/errors/exceptions.dart';
 import 'package:understand_dart_and_architecture_layer_01/core/errors/failure.dart';
-import 'package:understand_dart_and_architecture_layer_01/core/utilis/typedef.dart';
+import 'package:understand_dart_and_architecture_layer_01/core/utils/typedef.dart';
 import 'package:understand_dart_and_architecture_layer_01/src/authentication/data/datasources/authentication_remote_data_source.dart';
 import 'package:understand_dart_and_architecture_layer_01/src/authentication/domain/entities/user.dart';
 import 'package:understand_dart_and_architecture_layer_01/src/authentication/domain/repositories/authentication_repository.dart';

@@ -1,4 +1,4 @@
-import 'package:understand_dart_and_architecture_layer_01/core/utilis/typedef.dart';
+import 'package:understand_dart_and_architecture_layer_01/core/utils/typedef.dart';
 
 abstract class UsecaseWithParams<T, Params> {
   const UsecaseWithParams();
